@@ -15,5 +15,13 @@
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notifications" />
+    <item
+        android:id="@+id/navigation_Calender"
+        android:icon = "@drawable/ic_calender_black24dp"
+        android:title="@string/title_Calender" />
+    <item
+        android:id="@+id/navigation_Email"
+        android:icon= "@drawable/ic_email_black_24dp"
+        android:title="@string/title_Email" />
 
 </menu>

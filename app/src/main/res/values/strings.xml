@@ -3,4 +3,15 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_Calender">Calender</string>
+    <string name="title_Email">Email</string>
+    <string name = "arrow"> -> </string>
+    <string name="sunday"> Sun </string>
+    <string name="monday"> Mon </string>
+    <string name="tuesday"> Tue </string>
+    <string name="wednesday"> Wed </string>
+    <string name="thursday"> Thu </string>
+    <string name="friday"> Fri </string>
+    <string name="saturday"> Sat </string>
+    <string name= "no_event"> No events for selected date. </string>
 </resources>

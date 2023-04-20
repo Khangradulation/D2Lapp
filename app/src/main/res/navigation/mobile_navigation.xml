@@ -22,4 +22,14 @@
         android:name="com.example.d2lapp.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_Calender"
+        android:name="com.example.d2lapp.ui.Calender.CalenderFragment"
+        android:label="@string/title_Calender"
+        tools:layout="@layout/fragment_calender" />
+    <fragment
+        android:id="@+id/navigation_Email"
+        android:name="com.example.d2lapp.ui.email.EmailFragment"
+        android:label="@string/title_Email"
+        tools:layout="@layout/fragment_email" />
 </navigation>
