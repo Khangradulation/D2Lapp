@@ -9,5 +9,4 @@ class EmailViewModel: ViewModel(){
         value = "This is Email Fragment"
     }
     val text: LiveData<String> = _text
-
 }

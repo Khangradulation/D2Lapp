@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.d2lapp.R
 import com.example.d2lapp.databinding.FragmentEmailBinding
@@ -30,3 +33,4 @@ class EmailFragment : Fragment(R.layout.fragment_email) {
         emailRecyclerView.adapter = EmailAdapter(emails)
     }
 }
+

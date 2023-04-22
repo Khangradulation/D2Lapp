@@ -31,5 +31,16 @@
         android:id="@+id/navigation_Email"
         android:name="com.example.d2lapp.ui.email.EmailFragment"
         android:label="@string/title_Email"
-        tools:layout="@layout/fragment_email" />
+        tools:layout="@layout/fragment_email">
+        <action
+            android:id="@+id/action_navigation_Email_to_emailFullScreenFragment"
+            app:destination="@id/emailFullScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailFullScreenFragment"
+        android:name="com.example.d2lapp.ui.email.EmailFullScreenFragment"
+        android:label="EmailFullScreenFragment"
+        />
+
+
 </navigation>
