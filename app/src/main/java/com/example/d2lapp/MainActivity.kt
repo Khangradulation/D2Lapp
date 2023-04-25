@@ -1,6 +1,7 @@
 package com.example.d2lapp
 
 import android.os.Bundle
+import android.widget.FrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.d2lapp.databinding.ActivityMainBinding
+import com.example.d2lapp.ui.email.EmailFullScreenFragment
 import com.jakewharton.threetenabp.AndroidThreeTen
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         AndroidThreeTen.init(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val fragmentManager = supportFragmentManager
+
+        /*fragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, EmailFullScreenFragment())
+            .commit()*/
 
         val navView: BottomNavigationView = binding.navView
 
@@ -32,5 +40,12 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        if (binding != null) {
+            // access binding properties here
+        }
     }
 }
+
+
+

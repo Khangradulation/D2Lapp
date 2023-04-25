@@ -14,4 +14,5 @@
     <string name="friday"> Fri </string>
     <string name="saturday"> Sat </string>
     <string name= "no_event"> No events for selected date. </string>
+    <string name= "back">back</string>
 </resources>

@@ -1,45 +1,68 @@
 package com.example.d2lapp.ui.email
 
+
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.d2lapp.R
+import javax.annotation.Nullable
 
-class EmailFullScreenFragment : Fragment(R.layout.fragment_email_full_screen) {
 
-    private lateinit var email: Email
+class EmailFullScreenFragment : Fragment() {
+    private var mEmail: Email? = null
+    private var recyclerView: RecyclerView? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            email = it.getParcelable(EMAIL_KEY)!!
+        if (arguments != null) {
+            mEmail = requireArguments().getParcelable(ARG_EMAIL)
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view: View = inflater.inflate(R.layout.fragment_email_full_screen, container, false)
+        val subjectTextView = view.findViewById<TextView>(R.id.subjectTextView)
+        val senderTextView = view.findViewById<TextView>(R.id.senderTextView)
+        val bodyTextView = view.findViewById<TextView>(R.id.bodyTextView)
+        recyclerView = requireActivity().findViewById(R.id.emailRecyclerView)
+        recyclerView?.visibility = View.GONE
+        val backButton = view.findViewById<Button>(R.id.backButton)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        if (mEmail != null) {
+            subjectTextView.text = mEmail!!.subject
+            senderTextView.text = mEmail!!.sender
+            bodyTextView.text = mEmail!!.body
+        }
+        return view
+    }
 
-        val senderTextView: TextView = view.findViewById(R.id.senderTextView)
-        val subjectTextView: TextView = view.findViewById(R.id.subjectTextView)
-        val bodyTextView: TextView = view.findViewById(R.id.bodyTextView)
-
-        senderTextView.text = email.sender
-        subjectTextView.text = email.subject
-        bodyTextView.text = email.body
+    override fun onDestroyView() {
+        super.onDestroyView()
+        recyclerView?.visibility = View.VISIBLE
     }
 
     companion object {
-        private const val EMAIL_KEY = "email"
-
-        fun newInstance(email: Email): EmailFullScreenFragment {
-            val args = Bundle().apply {
-                putParcelable(EMAIL_KEY, email)
-            }
-            return EmailFullScreenFragment().apply {
-                arguments = args
-            }
+        private const val ARG_EMAIL = "arg_email"
+        fun newInstance(email: Email?): EmailFullScreenFragment {
+            val fragment = EmailFullScreenFragment()
+            val args = Bundle()
+            args.putParcelable(ARG_EMAIL, email)
+            fragment.arguments = args
+            return fragment
         }
     }
 }
+
+
+

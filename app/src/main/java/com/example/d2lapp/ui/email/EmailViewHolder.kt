@@ -12,39 +12,46 @@ import com.example.d2lapp.ui.email.Email
 
 
 class EmailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val senderTextView: TextView = itemView.findViewById(R.id.senderTextView)
-    private val subjectTextView: TextView = itemView.findViewById(R.id.subjectTextView)
-    private val bodyTextView: TextView = itemView.findViewById(R.id.bodyTextView)
+    val senderTextView: TextView = itemView.findViewById(R.id.senderTextView)
+    val subjectTextView: TextView = itemView.findViewById(R.id.subjectTextView)
+    val bodyTextView: TextView = itemView.findViewById(R.id.bodyTextView)
     private val topSeparatorView: View = itemView.findViewById(R.id.top_separator)
     private val bottomSeparatorView: View = itemView.findViewById(R.id.bottom_separator)
-    private val fullScreenButton: Button = itemView.findViewById(R.id.fullScreenButton)
+    val fullScreenButton: Button = itemView.findViewById(R.id.fullScreenButton)
 
     fun bind(email: Email, emails: List<Email>, fragmentManager: FragmentManager) {
+        // Set the sender, subject, and body texts
         senderTextView.text = email.sender
         subjectTextView.text = email.subject
         bodyTextView.text = email.body
 
+        // Show/hide the top and bottom separators based on the position
         if (adapterPosition == 0) {
             topSeparatorView.visibility = View.GONE
+        } else {
+            topSeparatorView.visibility = View.VISIBLE
         }
-
         if (adapterPosition == emails.size - 1) {
             bottomSeparatorView.visibility = View.GONE
+        } else {
+            bottomSeparatorView.visibility = View.VISIBLE
         }
 
+        // Set the click listener for the "view email" button
         fullScreenButton.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putParcelable("email", email)
             val emailFullScreenFragment = EmailFullScreenFragment.newInstance(email)
-            emailFullScreenFragment.arguments = bundle
             fragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, emailFullScreenFragment)
+                .replace(R.id.fragmentContainer, emailFullScreenFragment) // replace with container ID of EmailFragment
                 .addToBackStack(null)
                 .commit()
         }
     }
-
 }
+
+
+
+
+
 
 
 
